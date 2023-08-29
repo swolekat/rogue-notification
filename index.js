@@ -5,6 +5,25 @@ const rogueEmailAddress = 'support@rogueenergy.com';
 const title = 'New Rogue Energy Referral Sale Made!';
 let mostRecentDate = undefined;
 
+const sendNotification = () => {
+    console.log('sending notification');
+    fetch('http://127.0.0.1:9450/webhook', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            "trigger": "rougeSaleWebhook",
+        }),
+    }).then(async (response) => {
+        const data = await response.json();
+        console.log(data);
+    }).catch(e => {
+        console.log(e);
+    });
+};
+
 const checkInbox = async () => {
     console.log('checking the inbox');
     const messages = await gmail.get_messages(
@@ -28,12 +47,7 @@ const checkInbox = async () => {
         const newDate = messages[0].date;
         if(newDate > mostRecentDate){
             try {
-                fetch('localhost:9450/webhook', {
-                    option: 'POST',
-                    body: JSON.stringify({
-                        "trigger": "rougeSaleWebhook",
-                    }),
-                });
+                sendNotification();
             } catch(e) {
                 console.log(e);
             }

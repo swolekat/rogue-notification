@@ -9,6 +9,7 @@ Basic idea:
 # Setup
 * `npm i`
 * Get credentials.json ( https://github.com/levz0r/gmail-tester/blob/master/README.md#how-to-get-credentialsjson )
+* Make sure sammi has Local API Enabled
 
 # Running
 * `npm start`
