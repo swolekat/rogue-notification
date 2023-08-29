@@ -1,0 +1,14 @@
+{
+  "name": "rogue-notification",
+  "version": "0.0.1",
+  "description": "rouge energy notification",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "swolekat",
+  "license": "MIT",
+  "dependencies": {
+    "gmail-tester": "^1.3.8"
+  }
+}
