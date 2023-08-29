@@ -46,6 +46,7 @@ const checkInbox = async () => {
     if(messages.length > 0){
         const newDate = messages[0].date;
         if(newDate > mostRecentDate){
+            mostRecentDate = newDate;
             try {
                 sendNotification();
             } catch(e) {
